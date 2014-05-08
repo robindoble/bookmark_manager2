@@ -9,7 +9,19 @@ Scenario: Viewing home page
 
 Scenario: Add link
   Given I am on the homepage
-  When I fill in "title" with "title_test"
+  When I fill in "title" with "Makers"
   And I fill in "url" with "http://www.makersacademy.com"
   And I click "add"
-  Then I should see "title_test" in a link
+  Then I should see "Makers" in a link
+
+
+ Scenario: Adding links with two tags
+ Given I am on the homepage
+ When I fill in "title" with "Makers"
+ And I fill in "url" with "http://www.makersacademy.com"
+ And I fill in "tags" with "codeschool,education"
+ And I click "add"
+ Then I should see "Makers" in a link
+ And I should see "codeschool"
+ And I should see "education"
+  
