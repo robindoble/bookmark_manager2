@@ -10,7 +10,13 @@ require './lib/link'
 DataMapper.finalize
 DataMapper.auto_upgrade!
 
+
 class MyApp < Sinatra::Base
+
+	get '/' do 
+		erb :index
+		# "Bookmark Manager"
+	end
 
 
 end
