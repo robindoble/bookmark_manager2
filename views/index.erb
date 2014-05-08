@@ -1,11 +1,26 @@
 <html>
 
 	<head>
-	<!-- <link rel="stylesheet" type="text/css" href=""> -->
+	<link rel="stylesheet" type="text/css" href="/stylesheets/styles.css">
 	</head>
 
 	<body>
-	<div>Bookmark Manager</div>
+		<header>
+			Bookmark Manager
+		</header>	
+		
+		<form action="/" method="POST">
+			<input type="text" name="title"/>
+			<input type="text" name="url"/>
+			<button> add </button>
+		</form>
+
+		<section>
+			<% @links.each do |link| %>
+			<ul><a href="<%= link.url %>"><%= link.title %></a>
+			<% end %>
+		</section>
+
 	</body>
 
 

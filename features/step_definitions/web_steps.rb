@@ -6,7 +6,17 @@ Then(/^I should see "(.*?)"$/) do |elem|
   page.should have_content elem
 end
 
+When(/^I fill in "(.*?)" with "(.*?)"$/) do |name, value|
+	fill_in(name, :with => value)
+end
 
+When(/^I click "(.*?)"$/) do |elem|
+  find_button(elem).click
+end
+
+Then(/^I should see "(.*?)" in a link$/) do |link|
+	find_link(link).visible?
+end
 
 
 # # Taken from the cucumber-rails project.

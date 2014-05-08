@@ -13,9 +13,17 @@ DataMapper.auto_upgrade!
 
 class MyApp < Sinatra::Base
 
+
+	post '/' do 
+		title = params[:title]
+		url = params[:url]
+		Link.create(:title => params[:title],:url => params[:url])
+		redirect to('/')
+	end
+
 	get '/' do 
+		@links = Link.all
 		erb :index
-		# "Bookmark Manager"
 	end
 
 
