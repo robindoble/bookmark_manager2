@@ -1,25 +1,43 @@
 <html>
 
 	<head>
-	<link rel="stylesheet" type="text/css" href="/stylesheets/styles.css">
+		<!-- <link rel="stylesheet" type="text/css" href="/stylesheets/reset_css.css"> -->
+		<link rel="stylesheet" type="text/css" href="/stylesheets/styles.css">
 	</head>
 
 	<body>
-		<header>
-			Bookmark Manager
-		</header>	
 		
-		<form action="/" method="POST">
-			<input type="text" name="title" placeholder="title">
-			<input type="text" name="url" placeholder="url">
-			<input type="text" name="tags" placeholder="enter tags (sep) by comma">
-			<button> add </button>
-		</form>
-
 		<section>
-			<% @links.each do |link| %>
-			<ul><a href="<%= link.url %>"><%= link.title %></a>
-			<% end %>
+			
+				<form action="/" method="POST">
+					<input type="text" name="title" placeholder="title">
+					<input type="text" name="url" placeholder="url">
+					<input type="text" name="tags" placeholder="enter tags">
+					<button> add </button>
+				</form>
+
+				<table>
+					<th colspan="2">
+						Bookmark Manager
+					</th>	
+					<tr>
+						<td>Link</td>
+						<td>Tags</td>
+					</tr>	
+					<% @links.each do |link| %>
+							<tr>
+							<td>
+								<a href="<%= link.url %>"><%= link.title %></a>
+							</td>
+							<td>
+								<% link.tags.each do |tag| %>
+								<%=  tag.tag_name %>
+								<% end %>
+							</td>
+						</tr>
+					<% end %>
+				</table>
+
 		</section>
 
 	</body>

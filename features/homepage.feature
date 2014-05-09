@@ -19,7 +19,7 @@ Scenario: Add link
  Given I am on the homepage
  When I fill in "title" with "Makers"
  And I fill in "url" with "http://www.makersacademy.com"
- And I fill in "tags" with "codeschool,education"
+ And I fill in "tags" with "codeschool education"
  And I click "add"
  Then I should see "Makers" in a link
  And I should see "codeschool"
