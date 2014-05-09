@@ -16,10 +16,14 @@ DataMapper.auto_upgrade!
 class MyApp < Sinatra::Base
 
 	post '/' do 
-		tag_array = params[:tags].split(",").map {|tag| Tag.first_or_create(:tag_name => tag)}
-		puts tag_array.inspect
-		Link.create(:title => params[:title],:url => params[:url],:tags => tag_array)
-		redirect to('/')
+		if params[:route] == "home"
+			redirect to('/')
+		else
+			tag_array = params[:tags].split(",").map {|tag| Tag.first_or_create(:tag_name => tag)}
+			puts tag_array.inspect
+			Link.create(:title => params[:title],:url => params[:url],:tags => tag_array)
+			redirect to('/')
+		end
 	end
 
 	get '/' do 
