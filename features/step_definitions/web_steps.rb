@@ -15,8 +15,42 @@ When(/^I click "(.*?)"$/) do |elem|
 end
 
 Then(/^I should see "(.*?)" in a link$/) do |link|
-	find_link(link).visible?
+	first(:link, link).visible?
+	# find_link(link).visible?
 end
+
+Given(/^there are the following links:$/) do |table|
+  tags = []
+  table.hashes.each do |link|
+	# puts link.inspect
+	Link.create(:title => link["title"], :url => link["url"], :tags => [Tag.first_or_create(:tag_name => link["tags"])])
+end
+end
+
+When(/^I press the link "(.*?)"$/) do |tag|
+	visit '/'
+	first(:link, tag).click
+end
+
+Then(/^I should see only those links$/) do
+  
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # # Taken from the cucumber-rails project.

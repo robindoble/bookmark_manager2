@@ -16,7 +16,7 @@ DataMapper.auto_upgrade!
 class MyApp < Sinatra::Base
 
 	post '/' do 
-		tag_array = params[:tags].split(" ").map {|tag| Tag.first_or_create(:tag_name => tag)}
+		tag_array = params[:tags].split(",").map {|tag| Tag.first_or_create(:tag_name => tag)}
 		puts tag_array.inspect
 		Link.create(:title => params[:title],:url => params[:url],:tags => tag_array)
 		redirect to('/')
@@ -28,5 +28,10 @@ class MyApp < Sinatra::Base
 		erb :index
 	end
 
+	get '/tags/:text' do
+		tag = Tag.first(:tag_name => params[:text])
+		@links = (tag ? tag.links : [])
+		erb :index
+	end
 
 end

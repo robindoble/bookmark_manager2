@@ -31,7 +31,7 @@
 							</td>
 							<td>
 								<% link.tags.each do |tag| %>
-								<%=  tag.tag_name %>
+								<a href="/tags/<%= tag.tag_name %>"><%= tag.tag_name %></a>
 								<% end %>
 							</td>
 						</tr>
