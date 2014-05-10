@@ -21,6 +21,13 @@ describe 'User' do
 			expect(User.count).to eq (0)
 		end
 
+		it 'cant register the same user twice' do 
+			expect(User.count).to eq (0)
+			user = User.create(:email => "robin@test.com", :password => "password123", :password_confirmation => "password123")
+			user2 = User.create(:email => "robin@test.com", :password => "password789", :password_confirmation => "password789")
+			expect(User.count).to eq (1)
+		end
+
 
 	end
 
