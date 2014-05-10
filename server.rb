@@ -7,6 +7,7 @@ DataMapper.setup(:default, "postgres://localhost/bookmark_manager_#{env}")
 
 require './lib/link'
 require './lib/tag'
+require	'./lib/user'
 
 
 DataMapper.finalize
@@ -27,16 +28,16 @@ class MyApp < Sinatra::Base
 	end
 
 	post '/users/new' do 
-		@email=params[:email]
-		@password=params[:password]
-	
-
+		User.create(:email => params[:email], :password => params[:password])
+		redirect to('/')
 	end
-
 
 	get '/' do 
 		@links = Link.all
 		@tags = Tag.all
+			if User.any? == true 
+				@user = User.first
+			end
 		erb :index
 	end
 
