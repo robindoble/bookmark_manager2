@@ -32,8 +32,10 @@ When(/^I press the link "(.*?)"$/) do |tag|
 	first(:link, tag).click
 end
 
-Then(/^I should see only those links$/) do
-  
+Then(/^I should see search but not education or mailserver$/) do
+  expect(page).to have_content 'search'
+  expect(page.has_content?('education')).to be_false
+  expect(page.has_content?('mailserver')).to be_false
 end
 
 Given(/^I am on the user page$/) do
@@ -44,9 +46,9 @@ Then(/^the first user email should be "(.*?)"$/) do |email|
   expect(User.first.email).to eq(email)
 end
 
-
-
-
+Then(/^the first user count should still be zero$/) do
+  expect(User.count).to eq(0)
+end
 
 
 

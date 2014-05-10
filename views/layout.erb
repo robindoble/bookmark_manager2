@@ -1,0 +1,24 @@
+<html>
+
+	<head>
+		<!-- <link rel="stylesheet" type="text/css" href="/stylesheets/reset_css.css"> -->
+		<!-- <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"> -->
+	</head>
+
+	<body>
+
+			<h3>Bookmark Manager</h3>
+
+			<h3>
+
+					<% if current_user %>
+				    Welcome, <%= current_user.email %>
+				  <% end %>
+				  
+			</h3>
+
+			<%= yield %>
+
+	</body>
+					
+</html>

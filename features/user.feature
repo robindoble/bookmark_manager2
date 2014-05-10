@@ -5,6 +5,15 @@ Scenario: Signing up a new user
 	Given I am on the user page
 	When I fill in "email" with "robin@test.com"
 	And I fill in "password" with "password123"
+	And I fill in "password_confirmation" with "password123"
 	And I click "Sign Up"
 	Then the first user email should be "robin@test.com" 
 	And I should see "Welcome, robin@test.com"
+
+Scenario: Cant sign up if passwords dont match
+	Given I am on the user page
+	When I fill in "email" with "robin@test.com"
+	And I fill in "password" with "password123"
+	And I fill in "password_confirmation" with "password456"
+	And I click "Sign Up"
+	Then the first user count should still be zero

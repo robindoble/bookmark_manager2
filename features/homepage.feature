@@ -33,5 +33,5 @@ Scenario: Filtering links by tags
  |bing					|http://bing.com							|search							|
  |live					|http://live.com							|mailserver					|				
  When I press the link "search"
- Then I should see only those links
+ Then I should see search but not education or mailserver
  
