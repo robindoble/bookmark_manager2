@@ -1,3 +1,7 @@
+html{
+	text-align: center;
+	font-family: comic sans MS;
+}
 
 section {
 	border-style: solid;
@@ -14,41 +18,23 @@ div {
 	left: 10%;
 	right: 10%;
 	text-align: center;
+	padding: 5px;
+	margin-top: 10px
+}
 
+input {
+	/*background-color: black;*/
+	border-radius: 2px;
+	/*border-style: solid;*/
 }
 
 table {
-	/*background-color: black;*/
 	margin: 0 auto;
-	border-style: solid;
 	text-align: center;
-*/}
+	margin-bottom: 20px;
+}
 
 td {
 	width: 300px;
 }
 
-/*.link_row {
-	border-style: solid;
-	position: floating;
-	left: 10%;
-	right: 10%;
-	text-align: center;	
-}*/
-
-/*tr{
-	border-style: solid;	
-}*/
-
-
-/*.tag {
-	padding: 5px;
-	text-align: center;
-	width: 400px;
-}
-
-.add_link{
-	border-style: solid;
-	margin-left: 25%;
-	margin-right: 25%;
-}*/

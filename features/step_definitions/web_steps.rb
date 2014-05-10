@@ -36,8 +36,13 @@ Then(/^I should see only those links$/) do
   
 end
 
+Given(/^I am on the user page$/) do
+  visit '/users/new'
+end
 
-
+Then(/^the first user email should be "(.*?)"$/) do |email|
+  expect(User.first.email).to eq(email)
+end
 
 
 

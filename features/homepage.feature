@@ -15,7 +15,7 @@ Scenario: Add link
   Then I should see "Makers" in a link
 
 
- Scenario: Adding links with two tags
+Scenario: Adding links with two tags
  Given I am on the homepage
  When I fill in "title" with "Makers"
  And I fill in "url" with "http://www.makersacademy.com"
@@ -25,7 +25,7 @@ Scenario: Add link
  And I should see "codeschool"
  And I should see "education"
   
- Scenario: Filtering links by tags
+Scenario: Filtering links by tags
  Given there are the following links:
  |title					|url													|tags								|
  |makersacademy	|http://makersacademy.com			|education					|				   		

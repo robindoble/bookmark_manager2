@@ -26,6 +26,14 @@ class MyApp < Sinatra::Base
 		end
 	end
 
+	post '/users/new' do 
+		@email=params[:email]
+		@password=params[:password]
+	
+
+	end
+
+
 	get '/' do 
 		@links = Link.all
 		@tags = Tag.all
@@ -37,5 +45,10 @@ class MyApp < Sinatra::Base
 		@links = (tag ? tag.links : [])
 		erb :index
 	end
+
+	get '/users/new' do 
+		erb :signup
+	end
+
 
 end
