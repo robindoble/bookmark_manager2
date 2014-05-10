@@ -19,3 +19,8 @@ Scenario: Cant sign up if passwords dont match
 	Then the first user count should still be zero
 	And I should see "Password does not match the confirmation"
 
+Scenario: Registered user can login
+	Given I am a registered user with email "robin@test.com", pass "password123"
+	And I am on the user login page
+	When I fill in the correct login details "robin@test.com", pass "password123"
+	Then I should see "Welcome, robin@test.com"

@@ -54,10 +54,39 @@ end
 #   pending # express the regexp above with the code you wish you had
 # end
 
+Given(/^I am a registered user with email "(.*?)", pass "(.*?)"$/) do |mail, pass|
+  visit '/users/new'
+  fill_in('email', :with => mail)
+	fill_in('password', :with => pass)
+	fill_in('password_confirmation', :with => pass)
+	find_button('Sign Up').click
+
+	# fill_in(password_confirmation, :with => password)
+end
+
+Given(/^I am on the user login page$/) do
+  visit 'sessions/new'
+end
+
+When(/^I fill in the correct login details "(.*?)", pass "(.*?)"$/) do |mail, pass|
+  # session.clear
+  # visit '/sessions/new'
+  fill_in('email', :with => mail)
+	fill_in('password', :with => pass)
+	find_button('Sign Up').click
+end
 
 
+# Given(/^I am a registered user$/) do
+#   User.
+# end
+
+# When(/^I fill in the correct login details for "(.*?)"$/) do |email|
+#   fill_in(email, :with => email)
+# 	fill_in(password, :with => "")
 
 
+# end
 
 
 
