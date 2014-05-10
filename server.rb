@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'sinatra'
 require 'data_mapper'
+require 'rack-flash'
 
 env = ENV["RACK_ENV"] || "development"
 DataMapper.setup(:default, "postgres://localhost/bookmark_manager_#{env}")
@@ -16,6 +17,8 @@ class MyApp < Sinatra::Base
 
 enable :sessions
 set :session_secret, 'super-secret'
+
+use Rack::Flash
 
 	post '/' do 
 		if params[:route] == "home"
@@ -35,10 +38,14 @@ set :session_secret, 'super-secret'
 	end
 
 	post '/users' do 
-		user = User.create(:email => params[:email], :password => params[:password], :password_confirmation => params[:password_confirmation])
-		session[:user_id] = user.id
-		# puts current_user.email
-		redirect to('/')
+		@user = User.new(:email => params[:email], :password => params[:password], :password_confirmation => params[:password_confirmation])
+		if @user.save 
+			session[:user_id] = @user.id
+			redirect to('/')
+		else
+			flash[:notice] = "Sorry, your passwords do not match"
+			erb :signup
+		end
 	end
 
 	get '/' do 
@@ -48,6 +55,7 @@ set :session_secret, 'super-secret'
 	end
 
 	get '/users/new' do 
+		@user = User.new
 		erb :signup
 	end
 

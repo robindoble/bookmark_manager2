@@ -9,8 +9,12 @@
 
 			<h3>Bookmark Manager</h3>
 
-			<h3>
+					<% if flash[:notice] %>
+					  <div id="notice"><%= flash[:notice] %></div>
+					<% end %>
 
+
+			<h3>
 					<% if current_user %>
 				    Welcome, <%= current_user.email %>
 				  <% end %>

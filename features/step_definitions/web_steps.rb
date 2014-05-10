@@ -50,6 +50,10 @@ Then(/^the first user count should still be zero$/) do
   expect(User.count).to eq(0)
 end
 
+# Then(/^I should be "(.*?)"$/) do |arg1|
+#   pending # express the regexp above with the code you wish you had
+# end
+
 
 
 

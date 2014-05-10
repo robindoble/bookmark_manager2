@@ -17,3 +17,5 @@ Scenario: Cant sign up if passwords dont match
 	And I fill in "password_confirmation" with "password456"
 	And I click "Sign Up"
 	Then the first user count should still be zero
+	And I should see "Sorry, your passwords do not match"
+
